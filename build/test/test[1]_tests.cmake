@@ -1,3 +1,5 @@
 add_test( HelloTest.BasicAssertions [==[I:/Prod/C++/app/build/test/Debug/test.exe]==] [==[--gtest_filter=HelloTest.BasicAssertions]==] --gtest_also_run_disabled_tests)
 set_tests_properties( HelloTest.BasicAssertions PROPERTIES WORKING_DIRECTORY [==[I:/Prod/C++/app/build/test]==] SKIP_REGULAR_EXPRESSION [==[\[  SKIPPED \]]==])
-set( test_TESTS HelloTest.BasicAssertions)
+add_test( some.test_some [==[I:/Prod/C++/app/build/test/Debug/test.exe]==] [==[--gtest_filter=some.test_some]==] --gtest_also_run_disabled_tests)
+set_tests_properties( some.test_some PROPERTIES WORKING_DIRECTORY [==[I:/Prod/C++/app/build/test]==] SKIP_REGULAR_EXPRESSION [==[\[  SKIPPED \]]==])
+set( test_TESTS HelloTest.BasicAssertions some.test_some)

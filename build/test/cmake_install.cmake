@@ -33,7 +33,8 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  # Include the install script for the subdirectory.
+  # Include the install script for each subdirectory.
   include("I:/Prod/C++/app/build/_deps/googletest-build/cmake_install.cmake")
+
 endif()
 
