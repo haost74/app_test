@@ -2,9 +2,16 @@
 
 #include "gmock/gmock.h"
 
+#include <string>
+
+
 #include "../src/some_class.cpp"
 
+using ::testing::NiceMock;
+using ::testing::NaggyMock;
+using ::testing::StrictMock;
 
+using ::testing::Return; 
 
 // Demonstrate some basic assertions.
 TEST(HelloTest, BasicAssertions) {
@@ -19,24 +26,41 @@ TEST(HelloTest, BasicAssertions) {
     EXPECT_EQ(40, sc.sum(10, 30) );
  }
 
- class Turtle {
-  virtual void PenUp() = 0;
-  virtual void PenDown() = 0;
-  virtual void Forward(int distance) = 0;
-  virtual void Turn(int degrees) = 0;
-  virtual void GoTo(int x, int y) = 0;
-  virtual int GetX() const = 0;
-  virtual int GetY() const = 0;
-};
+ enum Bar {Diamonds, Hearts, Clubs, Spades };
 
-class MockTurtle : public Turtle {
+class Foo {
  public:
-
-  MOCK_METHOD(void, PenUp, (), (override));
-  MOCK_METHOD(void, PenDown, (), (override));
-  MOCK_METHOD(void, Forward, (int distance), (override));
-  MOCK_METHOD(void, Turn, (int degrees), (override));
-  MOCK_METHOD(void, GoTo, (int x, int y), (override));
-  MOCK_METHOD(int, GetX, (), (const, override));
-  MOCK_METHOD(int, GetY, (), (const, override));
+  //virtual ~Foo();
+  virtual int GetSize() const = 0;
+  virtual std::string Describe(const char* name) = 0;
+  virtual std::string Describe(int type) = 0;
+  virtual bool Process(Bar elem, int count) = 0;
 };
+
+class MockFoo : public Foo {
+ public:
+  MOCK_METHOD(int, GetSize, (), (const, override));
+  MOCK_METHOD(std::string, Describe, (const char* name), (override));
+  MOCK_METHOD(std::string, Describe, (int type), (override));
+  MOCK_METHOD(bool, Process, (Bar elem, int count), (override));
+};
+
+TEST(BarTest, DoesThis) {
+  MockFoo foo;                                    // #2
+
+  ON_CALL(foo, GetSize())                         // #3
+      .WillByDefault(Return(1));
+  // ... other default actions ...
+
+  EXPECT_CALL(foo, Describe(5))                   // #4
+      .Times(3)
+      .WillRepeatedly(Return("Category 5"));
+  // ... other expectations ...
+  // testing function -> MyProductionFunction
+  //EXPECT_EQ(MyProductionFunction(&foo), "good");  // #5
+} 
+   
+
+// void fooTest(){
+//     NiceMock<MockFoo> nice_foo;
+// }
