@@ -45,22 +45,18 @@ class MockFoo : public Foo {
   MOCK_METHOD(bool, Process, (Bar elem, int count), (override));
 };
 
-TEST(BarTest, DoesThis) {
-  MockFoo foo;                                    // #2
+// TEST(BarTest, DoesThis) {
+//   MockFoo foo;                                    // #2
 
-  ON_CALL(foo, GetSize())                         // #3
-      .WillByDefault(Return(1));
-  // ... other default actions ...
+//   ON_CALL(foo, GetSize())                         // #3
+//       .WillByDefault(Return(1));
+//   // ... other default actions ...
 
-  EXPECT_CALL(foo, Describe(5))                   // #4
-      .Times(3)
-      .WillRepeatedly(Return("Category 5"));
-  // ... other expectations ...
-  // testing function -> MyProductionFunction
-  //EXPECT_EQ(MyProductionFunction(&foo), "good");  // #5
-} 
+//   EXPECT_CALL(foo, Describe(5))                   // #4
+//       .Times(3)
+//       .WillRepeatedly(Return("Category 5"));
+//   // ... other expectations ...
+//   // testing function -> MyProductionFunction
+//   //EXPECT_EQ(MyProductionFunction(&foo), "good");  // #5
+// } 
    
-
-// void fooTest(){
-//     NiceMock<MockFoo> nice_foo;
-// }
