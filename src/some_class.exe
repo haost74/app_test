@@ -1,0 +1,32 @@
+# 1 "I:\\Prod\\C++\\app\\src\\some_class.cpp"
+# 1 "I:\\Prod\\C++\\app\\src//"
+# 1 "<built-in>"
+# 1 "<command-line>"
+# 1 "I:\\Prod\\C++\\app\\src\\some_class.cpp"
+# 1 "I:\\Prod\\C++\\app\\src\\some_class.h" 1
+
+
+class some_class
+{
+private:
+
+public:
+    some_class( );
+    ~some_class();
+    int sum(int, int);
+};
+# 2 "I:\\Prod\\C++\\app\\src\\some_class.cpp" 2
+
+some_class::some_class( )
+{
+}
+
+some_class::~some_class()
+{
+}
+
+
+int some_class::sum(int x, int y)
+{
+    return x + y;
+}
