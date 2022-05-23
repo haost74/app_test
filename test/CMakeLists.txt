@@ -5,7 +5,6 @@ project(my_project)
 set(CMAKE_CXX_STANDARD 20)
 include_directories(${GTEST_INCLUDE_DIRS})
 
-#add_subdirectory(../src)
 
 include(FetchContent)
 FetchContent_Declare(

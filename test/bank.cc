@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 
-#include "../src/Bank/BankAссaunt.cpp"
+#include "../src/bank/bank.cpp"
 
 TEST(bank, initp){
   BankAссaunt ba;
