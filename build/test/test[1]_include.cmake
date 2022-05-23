@@ -1,5 +1,0 @@
-if(EXISTS "I:/Prod/C++/app/build/test/test[1]_tests.cmake")
-  include("I:/Prod/C++/app/build/test/test[1]_tests.cmake")
-else()
-  add_test(test_NOT_BUILT test_NOT_BUILT)
-endif()
